@@ -1,9 +1,10 @@
 <h1>{{ title }}</h1>
+<h2>{{x()}}</h2>
+<div>
+  <input type="text" placeholder="taper le titre" [(ngModel)]="searchItem"  /> {{searchItem}}
+</div>
 <div class="container" style="display:flex;flex-wrap: wrap;gap: 20px;">
-  <div>
-    <input type="text" placeholder="taper le titre"/>
-  </div>
-	@for(conf of confList;track conf.id) {
+	@for(conf of search();track conf.id) {
     @if(conf.nbPlaces>0){
 		<div class="card" style="width: 18rem;">
 			<!-- Property Binding [src]-->
@@ -22,7 +23,7 @@
 </div>
 <div>
   <ul>
-    @for(fconf of favoriteListe; track fconf.id){
+    @for(fconf of favoriteListe(); track fconf.id){
       <li>{{fconf.titre}}</li>
     }
   </ul>
